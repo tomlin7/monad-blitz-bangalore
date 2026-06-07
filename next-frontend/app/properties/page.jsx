@@ -1,8 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { PROPERTIES } from "../data/properties";
+"use client";
 
-export function PropertiesPage() {
-  const navigate = useNavigate();
+import { useRouter } from "next/navigation";
+import { PROPERTIES } from "../../data/properties";
+import Image from "next/image";
+
+export default function PropertiesPage() {
+  const router = useRouter();
 
   return (
     <div className="flex flex-col gap-8">
@@ -22,7 +25,7 @@ export function PropertiesPage() {
               <p className="font-body text-gray-600 mb-4">{p.location}</p>
               <p className="font-pixel text-sm text-neo-accent-blue mb-4">₹{p.deposit}</p>
             </div>
-            <button onClick={() => navigate(`/property/${p.id}`)} className="neo-btn bg-neo-bg-yellow w-full text-xs py-2">
+            <button onClick={() => router.push(`/property/${p.id}`)} className="neo-btn bg-neo-bg-yellow w-full text-xs py-2">
               DETAILS
             </button>
           </div>

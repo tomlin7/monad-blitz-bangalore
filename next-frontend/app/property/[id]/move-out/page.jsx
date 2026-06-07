@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { PROPERTIES } from "../data/properties";
-import { ImageUploader } from "../components/ImageUploader";
+"use client";
 
-export function MoveOutPage() {
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { PROPERTIES } from "../../../../data/properties";
+import { ImageUploader } from "../../../../components/ImageUploader";
+
+export default function MoveOutPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
   const property = PROPERTIES.find(p => p.id === parseInt(id));
   const [imagesUploaded, setImagesUploaded] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -67,7 +69,7 @@ export function MoveOutPage() {
             <p className="font-pixel text-3xl md:text-4xl">₹{settlement.refund}</p>
           </div>
 
-          <button onClick={() => navigate("/")} className="neo-btn bg-white w-full text-[10px]">
+          <button onClick={() => router.push("/")} className="neo-btn bg-white w-full text-[10px]">
             RETURN TO HOME
           </button>
         </div>

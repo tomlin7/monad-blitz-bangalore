@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { PROPERTIES } from "../data/properties";
+"use client";
 
-export function PropertyDetailsPage() {
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { PROPERTIES } from "../../../data/properties";
+
+export default function PropertyDetailsPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [propertyState, setPropertyState] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   const property = PROPERTIES.find(p => p.id === parseInt(id));
 
   useEffect(() => {
+    setMounted(true);
     const savedState = localStorage.getItem(`property_${id}_state`);
     if (savedState) {
       setPropertyState(JSON.parse(savedState));
@@ -17,6 +21,7 @@ export function PropertyDetailsPage() {
   }, [id]);
 
   if (!property) return <div className="font-pixel">Property not found.</div>;
+  if (!mounted) return null;
 
   const isOccupied = propertyState && propertyState.status === 'Occupied';
 
@@ -57,11 +62,11 @@ export function PropertyDetailsPage() {
 
         <div className="flex gap-4">
           {!isOccupied ? (
-            <button onClick={() => navigate(`/property/${id}/move-in`)} className="neo-btn bg-neo-accent-green w-full">
+            <button onClick={() => router.push(`/property/${id}/move-in`)} className="neo-btn bg-neo-accent-green w-full">
               INITIATE MOVE-IN
             </button>
           ) : (
-            <button onClick={() => navigate(`/property/${id}/move-out`)} className="neo-btn bg-neo-accent-pink w-full text-white">
+            <button onClick={() => router.push(`/property/${id}/move-out`)} className="neo-btn bg-neo-accent-pink w-full text-white">
               INITIATE MOVE-OUT
             </button>
           )}

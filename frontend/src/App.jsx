@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 import { LandingPage } from "./pages/LandingPage";
 import { PropertiesPage } from "./pages/PropertiesPage";
 import { PropertyDetailsPage } from "./pages/PropertyDetailsPage";
@@ -11,7 +12,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen p-4 md:p-8 flex flex-col items-center">
         <Navbar />
-        <main className="w-full max-w-5xl">
+        <main className="w-full max-w-5xl flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/properties" element={<PropertiesPage />} />
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/property/:id/move-out" element={<MoveOutPage />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

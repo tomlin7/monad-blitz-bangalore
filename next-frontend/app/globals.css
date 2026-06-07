@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Neo-Brutalism Color Palette */
+  --color-neo-bg-blue: #61a3ff;
+  --color-neo-bg-red: #ff7a85;
+  --color-neo-bg-yellow: #ffde59;
+  --color-neo-bg-purple: #c095e3;
+  
+  --color-neo-card-white: #ffffff;
+  --color-neo-card-black: #000000;
+  
+  --color-neo-accent-green: #2ee57e;
+  --color-neo-accent-pink: #ff6b8b;
+  --color-neo-accent-blue: #3b82f6;
+
+  /* Typography */
+  --font-pixel: "Press Start 2P", monospace;
+  --font-body: "Space Grotesk", sans-serif;
+}
+
+body {
+  background-color: var(--color-neo-bg-yellow);
+  font-family: var(--font-body);
+  color: #000;
+  margin: 0;
+  min-height: 100vh;
+  /* Add subtle background pattern for pop-art vibe */
+  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom Neo-Brutalist Utilities */
+@utility neo-border {
+  border: 3px solid #000000;
+}
+
+@utility neo-shadow {
+  box-shadow: 4px 4px 0px #000000;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+@utility neo-shadow-hover {
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+  }
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+  }
+}
+
+@utility neo-container {
+  @apply bg-neo-card-white neo-border neo-shadow p-6;
+  border-radius: 0; /* Boxy feel for pixelated vibe */
+}
+
+@utility neo-inner-card {
+  @apply bg-white neo-border p-4 shadow-[2px_2px_0px_#000000];
+}
+
+@utility neo-btn {
+  @apply tracking-wide px-8 py-3 neo-border neo-shadow neo-shadow-hover cursor-pointer inline-flex justify-center items-center gap-2;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  background-color: var(--color-neo-card-white);
+  color: var(--color-neo-card-black);
+}
+
+@utility neo-badge {
+  @apply px-4 py-1 neo-border font-bold text-xs uppercase inline-block bg-neo-card-white;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+}

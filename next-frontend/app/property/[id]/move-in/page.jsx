@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { PROPERTIES } from "../data/properties";
-import { ImageUploader } from "../components/ImageUploader";
+"use client";
 
-export function MoveInPage() {
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { PROPERTIES } from "../../../../data/properties";
+import { ImageUploader } from "../../../../components/ImageUploader";
+
+export default function MoveInPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
   const property = PROPERTIES.find(p => p.id === parseInt(id));
   const [imagesUploaded, setImagesUploaded] = useState(false);
   const [isLocking, setIsLocking] = useState(false);
@@ -19,7 +21,7 @@ export function MoveInPage() {
         timestamp: new Date().toISOString()
       }));
       setIsLocking(false);
-      navigate(`/property/${id}`);
+      router.push(`/property/${id}`);
     }, 2500);
   };
 

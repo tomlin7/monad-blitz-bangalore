@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
+"use client";
 
-export function LandingPage() {
-  const navigate = useNavigate();
+import { useRouter } from "next/navigation";
+
+export default function LandingPage() {
+  const router = useRouter();
 
   return (
     <div className="flex flex-col gap-12 pb-12">
@@ -18,7 +20,7 @@ export function LandingPage() {
           <strong>Rent Chaukidaar</strong> is an AI-powered escrow platform that protects tenants and landlords from unfair security deposit disputes. Your deposit is locked in a Monad smart contract and verified by Sarvam AI.
         </p>
         
-        <button onClick={() => navigate("/properties")} className="neo-btn bg-neo-accent-green text-black hover:bg-green-400 text-lg md:text-xl px-12 py-4 shadow-[6px_6px_0px_#000]">
+        <button onClick={() => router.push("/properties")} className="neo-btn bg-neo-accent-green text-black hover:bg-green-400 text-lg md:text-xl px-12 py-4 shadow-[6px_6px_0px_#000]">
           VIEW PROPERTIES
         </button>
       </section>
