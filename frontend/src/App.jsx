@@ -1,0 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { LandingPage } from "./pages/LandingPage";
+import { PropertiesPage } from "./pages/PropertiesPage";
+import { PropertyDetailsPage } from "./pages/PropertyDetailsPage";
+import { MoveInPage } from "./pages/MoveInPage";
+import { MoveOutPage } from "./pages/MoveOutPage";
+
+export default function App() {
+  return (
+    <Router>
+      <div className="min-h-screen p-4 md:p-8 flex flex-col items-center">
+        <Navbar />
+        <main className="w-full max-w-5xl">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/properties" element={<PropertiesPage />} />
+            <Route path="/property/:id" element={<PropertyDetailsPage />} />
+            <Route path="/property/:id/move-in" element={<MoveInPage />} />
+            <Route path="/property/:id/move-out" element={<MoveOutPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
