@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
 
 async function fetchImageBase64(url) {
+  if (url.startsWith("data:")) {
+    const matches = url.match(/^data:([a-zA-Z0-9]+\/[a-zA-Z0-9-\.\+]+);base64,(.+)$/);
+    if (matches && matches.length === 3) {
+      return {
+        mimeType: matches[1],
+        data: matches[2]
+      };
+    }
+  }
+
   try {
     const response = await fetch(url);
     if (!response.ok)
