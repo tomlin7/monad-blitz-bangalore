@@ -3,7 +3,7 @@
 
 [![Built on Monad](https://img.shields.io/badge/Blockchain-Monad_Testnet-8B75FF?style=for-the-badge&logo=ethereum)](https://testnet.monadscan.com)
 [![Sarvam AI](https://img.shields.io/badge/AI-Sarvam_Translate-FF7A85?style=for-the-badge)](https://www.sarvam.ai)
-[![Gemini Vision](https://img.shields.io/badge/AI-Gemini_Vision_1.5_Flash-2EE57E?style=for-the-badge&logo=google)](https://ai.google.dev)
+[![Gemini Vision](https://img.shields.io/badge/AI-Gemini_Vision_2.5_Flash-2EE57E?style=for-the-badge&logo=google)](https://ai.google.dev)
 [![Interface](https://img.shields.io/badge/UI-Neo_Brutalist-FFDE59?style=for-the-badge)](https://github.com)
 
 ---
